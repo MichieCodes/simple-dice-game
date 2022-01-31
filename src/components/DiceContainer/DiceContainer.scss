@@ -1,0 +1,8 @@
+.dice-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem 1.75rem;
+    width: fit-content;
+    margin: 0 auto;
+}
+  

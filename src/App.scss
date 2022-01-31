@@ -50,25 +50,3 @@ input, button {
     width: 20rem;
     font-size: calc(10px + 2vmin);
 }
-
-.dice-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem 1.75rem;
-    width: fit-content;
-    margin: 0 auto;
-}
-
-.dice-history {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-
-    .die {
-        width: 50px;
-        height: 50px;
-        opacity: 0.5;
-    }
-}
-
-

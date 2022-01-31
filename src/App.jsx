@@ -1,34 +1,38 @@
 import React from 'react'
-import {sleep} from './utils/delay'
+import {sleep} from './utils/sleep'
 
-import Die from './components/Die'
+import DiceContainer from './components/DiceContainer'
+import DiceHistory from './components/DiceHistory'
 
 import './App.scss'
 
 function App() {
   const [numberOfDice, setNumberOfDice] = React.useState(1)
   const [dice, setDice] = React.useState([])
-  const [history, setHistory] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
-  const rollDice = async () => {
-    console.log("ROLLING: ", numberOfDice)
-    let currentNumber = numberOfDice
-    let randomDice = []
+  const randomizeDice = async (currentNumber, duration = 2000, delay = 100) => {
+    const ticks = duration / delay; 
 
-    for(let i = 0; i < 20; i++) {
-      randomDice = Array.from(
+    for(let i = 0; i < ticks; i++) {
+      let randomDice = Array.from(
         {length: currentNumber},
         _ => 1 + Math.floor(Math.random() * 6)
       )
 
       setDice(randomDice)
-      await sleep(100)
-    }
+      await sleep(delay)
+    } 
+  }
 
-    setHistory((prevHistory) => [
-      ...randomDice,
-      ...prevHistory
-    ].slice(0, 15))
+  const rollDice = async () => {
+    console.log("ROLLING: ", numberOfDice)
+
+    setLoading(true)
+
+    await randomizeDice(numberOfDice)
+
+    setLoading(false)
   }
 
   return (
@@ -47,21 +51,8 @@ function App() {
         </button>
       </div>
 
-      <section className="dice-container">
-        {dice.map((face, i) => 
-          <Die key={i} face={face}/>
-        )}
-      </section>
-
-      <section>
-        <h2>Previous Rolls</h2>
-
-        <section className="dice-history">
-          {history.map((face, i) => 
-            <Die key={i} face={face}/>
-          )} 
-        </section>
-      </section>
+      <DiceContainer dice={dice}/>
+      <DiceHistory lastDice={!loading && dice}/>
     </div>
   )
 }

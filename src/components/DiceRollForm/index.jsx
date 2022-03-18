@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {sleep} from '/src/utils/sleep'
 
 function DiceRollForm({setDice, setLoading}) {
@@ -12,7 +13,7 @@ function DiceRollForm({setDice, setLoading}) {
     const ticks = duration / delay; 
 
     for(let i = 0; i < ticks; i++) {
-      let randomDice = Array.from(
+      const randomDice = Array.from(
         {length: currentNumber},
         _ => 1 + Math.floor(Math.random() * 6)
       )

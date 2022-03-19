@@ -24,8 +24,6 @@ function DiceRollForm({setDice, setLoading}) {
   }
 
   const rollDice = async () => {
-    console.log("ROLLING: ", numberOfDice)
-
     setLoading(true)
 
     await randomizeDice(numberOfDice)

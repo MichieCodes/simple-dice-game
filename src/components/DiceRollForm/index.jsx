@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {sleep} from '/src/utils/sleep'
+import {sleep} from '/src/utils/delay'
 
 function DiceRollForm({setDice, setLoading}) {
   const [numberOfDice, setNumberOfDice] = React.useState(1)

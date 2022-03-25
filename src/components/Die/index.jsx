@@ -7,9 +7,7 @@ function Die({face}) {
 
     return (
         <div className={diceClass}>
-            {Array.from({length: face}, _ => 
-                <span></span>
-            )}
+            {Array.from({length: face}, () => <span/>)}
         </div>
     )
 }

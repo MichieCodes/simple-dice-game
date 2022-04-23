@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <DiceRollForm setDice={setDice} setLoading={setLoading}/> 
       <DiceContainer dice={dice}/>
-      <DiceHistory lastDice={!loading && dice}/>
+      {!!dice.length && <DiceHistory lastDice={!loading && dice}/>}
     </div>
   )
 }

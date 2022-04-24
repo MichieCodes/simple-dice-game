@@ -16,6 +16,9 @@ function DiceHistory({lastDice}) {
     ].slice(0, 15))
   }, [lastDice])
 
+  if(!history.length)
+    return null
+
   return (
     <section>
       <h2>Previous Rolls</h2>
